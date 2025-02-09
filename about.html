@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+    <header>
+        <h1>关于</h1>
+    </header>
+    <main>
+        <p>本网站是一个极简的软件目录，由个人创建和维护。</p>
+        <p>本网站所提供的软件资源均来自互联网，所有下载链接均指向软件官方网站。我们不提供任何破解版或盗版软件。</p>
+        <p>本网站仅供学习和交流使用，禁止用于任何商业用途.未经授权，禁止转载、复制或盗用本网站的任何内容。</p>
+    </main>
+    <footer>
+        &copy; 2025 极简软件目录
+    </footer>
+    <script>
+        const body = document.body;
+
+        // Function to set the theme based on local storage
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+        }
+
+        // Immediately Invoked Function Expression (IIFE) to set theme on page load
+        (function () {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                setTheme(storedTheme);
+            }
+        })();
+
+        window.addEventListener('theme-changed', function () {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                setTheme(storedTheme);
+            }
+        });
+    </script>
+</body>
+</html>

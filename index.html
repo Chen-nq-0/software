@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简软件目录</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+    <header>
+        <h1>极简软件目录</h1>
+        <p>国内常用软件精选</p>
+        <p>本网站旨在提供国内常用软件的官方下载链接和基础信息，方便用户快速找到所需的 software.</p>
+        <button id="theme-toggle">🌙</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="about.html">关于</a></li>
+        </ul>
+    </nav>
+    <main class="software-list">
+        <div class="software-card">
+            <img src="placeholder-icon.png" alt="软件图标">
+            <h2>软件名称</h2>
+            <p>一句话简介</p>
+            <a href="#">官方下载链接</a>
+        </div>
+        <div class="software-card">
+            <img src="image/nvidia-icon.png" alt="Nvidia显卡驱动图标">
+            <h2>Nvidia显卡驱动</h2>
+            <p>Nvidia显卡驱动程序</p>
+            <a href="https://www.nvidia.cn/geforce/drivers/">官方下载链接</a>
+        </div>
+        <div class="software-card">
+            <img src="image/amd-icon.png" alt="AMD显卡驱动图标">
+            <h2>AMD显卡驱动</h2>
+            <p>AMD显卡驱动程序</p>
+            <a href="https://www.amd.com/zh-hans/support">官方下载链接</a>
+        </div>
+        <div class="software-card">
+            <img src="image/360-icon.png" alt="360安全卫士图标">
+            <h2>360安全卫士</h2>
+            <p>电脑安全防护</p>
+            <a href="https://www.360.cn/">官方下载链接</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 极简软件目录
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Function to set the theme based on local storage
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+             // Notify the about page
+             window.dispatchEvent(new Event('theme-changed'));
+        }
+
+        // Event listener for theme toggle button
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                setTheme('light');
+                themeToggle.textContent = '🌙'; // Moon icon
+            } else {
+                setTheme('dark');
+                themeToggle.textContent = '☀️'; // Sun icon
+            }
+        });
+
+        // Immediately Invoked Function Expression (IIFE) to set theme on page load
+        (function () {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                setTheme(storedTheme);
+                if (storedTheme === 'dark') {
+                    themeToggle.textContent = '☀️'; // Sun icon
+                } else {
+                    themeToggle.textContent = '🌙'; // Moon icon
+                }
+            } else {
+                setTheme('light'); // Default to light theme
+                themeToggle.textContent = '🌙'; // Moon icon
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* CSS variables for light theme */
+:root {
+    --body-bg: linear-gradient(to bottom, #f0f2f5, #e1e5ea);
+    --text-color: #333;
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --nav-bg: rgba(255, 255, 255, 0.7);
+    --software-card-bg: rgba(255, 255, 255, 0.9);
+    --footer-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+    --body-bg: linear-gradient(to bottom, #222, #333);
+    --text-color: #ddd;
+    --header-bg: rgba(34, 34, 34, 0.8);
+    --nav-bg: rgba(51, 51, 51, 0.7);
+    --software-card-bg: rgba(68, 68, 68, 0.9);
+    --footer-bg: rgba(34, 34, 34, 0.8);
+}
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: var(--body-bg);
+    color: var(--text-color);
+    transition: background 0.5s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+    color: #007bff;
+}
+
+/* Navigation Styles */
+nav {
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 600;
+    position: relative;
+}
+
+nav a:before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+/* Add About link to nav */
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav a:hover:before {
+    width: 100%;
+}
+
+/* Software List Styles */
+.software-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3rem;
+    position: relative;
+    z-index: 5;
+}
+
+/* Software Card Styles */
+.software-card {
+    width: 280px;
+    background: var(--software-card-bg);
+    margin: 2rem;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 12px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.software-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #007bff, #66a3ff);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+.software-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.software-card:hover:before {
+    transform: scaleX(1);
+}
+
+.software-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 1.2rem;
+    transition: transform 0.4s ease-in-out;
+}
+
+.software-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.software-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color); /* Use the text color variable */
+    transition: color 0.3s;
+}
+
+.software-card a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 3px 5px rgba(0, 119, 255, 0.3);
+}
+
+.software-card a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 8px rgba(0, 86, 179, 0.4);
+}
+
+/* Footer Styles */
+footer {
+    background: var(--footer-bg);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
